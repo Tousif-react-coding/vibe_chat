@@ -1,0 +1,60 @@
+
+.signup{
+    width: 100%;
+    height: 50vh;
+}
+
+
+.form-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   width: 50vw;
+   
+    margin-top: 1rem;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #495057;
+    margin-bottom: 8px;
+    font-family: 'Arial', sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"], 
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus ,
+input[type="file"]:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+.pass-input{
+    position: relative;
+}
+.pass-input span{
+    position: absolute;
+    top: 35%;
+    right: 10px; /* Adjust based on your preference */
+    transform: translateY(-50%);
+    font-size: 18px; /* Adjust size if needed */
+    color: #495057; /* Color of the icon */
+    cursor: pointer;
+}
+
