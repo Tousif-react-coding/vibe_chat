@@ -80,8 +80,7 @@ const navigate = useNavigate()
                 >
                   <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i>
                 </span></div>
-                <label htmlFor="pic"> Profile Pic</label>
-                <input type="file" id="pic" name="pic" placeholder="Upload profile pic" accept="image/*" />
+              
                 <Button variant="contained" color="success" type="submit">
                     Register
                 </Button>

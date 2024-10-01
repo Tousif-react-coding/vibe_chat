@@ -5,11 +5,9 @@ const { chats } = require("./data/data");
 // const cors = require('cors')
 const app = express();
 const userRoutes = require('./routes/userRoutes');
-const chatRoutes = require("./routes/chatRoutes");
-
 const ExpressErr = require("./utils/ExpressErr");
 const { errorHandler } = require("./middleware/errorMiddleware");
-const { allUsers } = require("./controller/user");
+
 const auth = require("./middleware/auth");
 dotenv.config();
 const http = require('http');
@@ -63,8 +61,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api',userRoutes)
-app.use('/api/user',auth,allUsers);
-// app.use("/api/chat", chatRoutes);
+
 
 app.post('/api/chat', (req,res)=>{
   res.send("chat msg")
@@ -103,8 +100,8 @@ io.on('connection', (socket) => {
       console.log('Client disconnected');
   });
 });
-server.listen(3000, () => {
-  console.log('listening on *:3000');
+server.listen(port, () => {
+  console.log(`listening on *:${port}`);
 });
 
 // app.listen(port , ()=>{

@@ -4,51 +4,41 @@ const bcrypt = require("bcrypt"); // To compare hashed passwords
 const jwt = require("jsonwebtoken"); // For generating JWT tokens
 const User = require('../models/userModel');
 
-
-const { allUsers } = require('../controller/user');
-
-
-
-
-router.post("/signup",   (req , res) => {
-  let {name,email , password } = req.body;
+//signup
+router.post("/signup", (req, res) => {
+  const { name, email, password } = req.body;
  
-  //hashing pssword
-bcrypt.hash(password , 10)
-.then((hashedPassword)=>{
-  let user = new User({name , email , password : hashedPassword});
-  user.save()
-   // return success if the new user is added to the database successfully
-   .then((result) => {
-    res.status(201).send({
-      message: "User Created Successfully",
-      result: {
-        id: result._id,
-        name: result.name,
-        email: result.email,
-      }
-      
-    });
-    console.log(result);
 
-  })
-  // catch error if the new user wasn't added successfully to the database
-  .catch((error) => {
-    res.status(500).send({
-      message: "Error creating user",
-      error,
-    });
-  });
+  bcrypt.hash(password, 10)
+      .then((hashedPassword) => {
+          let user = new User({
+              name,
+              email,
+              password: hashedPassword,
+             
+          });
+          return user.save();
+      })
+      .then((result) => {
+          res.status(201).send({
+              message: "User Created Successfully",
+              result: {
+                  id: result._id,
+                  name: result.name,
+                  email: result.email,
+                 
+              }
+          });
+      })
+      .catch((error) => {
+          console.error('Error creating user:', error); // Improved error logging
+          res.status(500).send({
+              message: "Error creating user",
+              error: error.message, // Send back a simpler error message
+          });
+      });
+});
 
-})
-.catch((e)=>{
-  res.status(500).send({
-    message:"Password was not hashed ",
-  })
-  e;
-  console.log(e);
-})
-})
 // login
 router.post("/login", (request, response) => {
   let name = request.body.name
@@ -103,6 +93,6 @@ router.post("/login", (request, response) => {
     });
 });
 
-router.route("/").get( allUsers);
+
 
 module.exports = router;

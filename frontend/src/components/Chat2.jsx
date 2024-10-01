@@ -23,6 +23,10 @@ const Chat2 = () => {
 
     const [userName, setUserName] = useState('');
 
+     // Create audio elements for sending and receiving sounds
+     const sendSound = new Audio('/sendSound.wav');
+     const receiveSound = new Audio('/rec.wav');
+
     useEffect(() => {
         const name = localStorage.getItem('userName');
         if (name) {
@@ -40,6 +44,7 @@ const Chat2 = () => {
         socket.on('receiveMessage', (message) => {
             console.log('Received message:', message);
             setMessages((prevMessages) => [...prevMessages, message]);
+            receiveSound.play();
         });
 
         // Clean up the listener on component unmount
@@ -56,6 +61,7 @@ const Chat2 = () => {
             try {
                 // Post the new message to the API
                 await axios.post('http://localhost:3000/api/chat', messageObject);
+                sendSound.play();
             } catch (error) {
                 console.error('Error sending message:', error);
             }
