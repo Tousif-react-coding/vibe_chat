@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 
-const socket = io(import.meta.env.VITE_API_URL, {
+const socket = io("https://vibe-chat-pr80.onrender.com", {
     transports: ['websocket', 'polling'],
 });
 
@@ -59,7 +59,7 @@ const Chat2 = () => {
             console.log('Sending message:', messageObject);
             
             try {
-                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';  // Fallback to localhost for dev
+                const apiUrl = "https://vibe-chat-pr80.onrender.com" || 'http://localhost:3000';  // Fallback to localhost for dev
                 // Post the new message to the API
                 await axios.post(`${apiUrl}/api/chat`, messageObject);
                 sendSound.play();
