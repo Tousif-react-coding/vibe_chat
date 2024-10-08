@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 
-const socket = io('http://localhost:3000', {
+const socket = io(import.meta.env.VITE_API_URL, {
     transports: ['websocket', 'polling'],
 });
 
@@ -59,12 +59,14 @@ const Chat2 = () => {
             console.log('Sending message:', messageObject);
             
             try {
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';  // Fallback to localhost for dev
                 // Post the new message to the API
-                await axios.post('http://localhost:3000/api/chat', messageObject);
+                await axios.post(`${apiUrl}/api/chat`, messageObject);
                 sendSound.play();
             } catch (error) {
                 console.error('Error sending message:', error);
             }
+            
             
             socket.emit('sendMessage', messageObject);
             setInput('');

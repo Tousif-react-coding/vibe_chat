@@ -18,7 +18,7 @@ const cors = require('cors');
 const port = process.env.PORT || 5000;
 const io = socketIo(server, {
   cors: {
-      origin: "http://localhost:3000", // Adjust this based on your frontend port
+      origin: "*", // Adjust this based on frontend port
       methods: ["GET", "POST"],
       credentials: true,
   }
