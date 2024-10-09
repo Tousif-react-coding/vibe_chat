@@ -18,7 +18,7 @@ const cors = require('cors');
 const port = process.env.PORT || 5000;
 const io = socketIo(server, {
   cors: {
-      origin: "*", // Adjust this based on frontend port
+      origin: "https://vibe-chat-1.onrender.com", // Adjust this based on frontend port
       methods: ["GET", "POST"],
       credentials: true,
   }
