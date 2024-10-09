@@ -27,11 +27,11 @@ const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const apiUrl = "https://vibe-chat-pr80.onrender.com";
+        
 
         const configuration = {
           method: 'post',
-          url: `${apiUrl}/api/signup`,
+          url: `https://vibe-chat-pr80.onrender.com/api/signup`,
           data: formData,
          
         };

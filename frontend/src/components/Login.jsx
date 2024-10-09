@@ -20,10 +20,10 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   const apiUrl = "https://vibe-chat-pr80.onrender.com";
+  
     const configuration = {
         method: 'post',
-        url: `${apiUrl}/api/login`,
+        url: `https://vibe-chat-pr80.onrender.com/api/login`,
         data: formData,
     };
 
